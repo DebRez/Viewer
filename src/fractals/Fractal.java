@@ -4,9 +4,23 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by Deb Rezanka on 3/25/2017.
+ * @author Deb Rezanka
+ * Fractal is an abstract class holding
+ * the color schemes. It is meant to make adding
+ * new functinality easier in the future.
  */
+
+//***********************************
+//Deb Rezanka
+//
+//Fractal is an abstract class that all fractal
+// pattern should inherit from to get shared
+// resources
+//
+//***********************************
+
 public abstract class Fractal
 {
   private boolean DEBUG = true;
@@ -15,7 +29,7 @@ public abstract class Fractal
   private List<Color> colorScheme = new ArrayList<>();
   private List<Color> temp = new ArrayList<>();
 
-  public Fractal(int cs) throws ClassNotFoundException, IllegalAccessException
+  public Fractal(int cs)
   {
     colorScheme = setColorScheme(cs);
   }
@@ -25,28 +39,33 @@ public abstract class Fractal
    * @param cs integer value to indicate which colorScheme to use
    * @return ArrayList<Color> of the requested colorScheme
    *
-   *   temp[0] is the background color.
-   * */
+   * temp[0] is used as the background color. Default scheme is Forest
+   **/
+  //***********************************
+  //setColorScheme returns a color scheme based on the
+  //Users choice. Default is Forest.
+  //***********************************
+
   private ArrayList<Color> setColorScheme(int cs)
   {
     temp.clear();
 
     switch(cs)
     {
-      //Practice scheme - kind of horrible
+      //Desert Scheme
       case 0:
-        temp.add(0, Color.BLACK);
-        temp.add(1, Color.RED);
+        temp.add(0, Color.DARKSLATEGREY);
+        temp.add(1, Color.GOLD);
         temp.add(2, Color.WHITE);
-        temp.add(3, Color.BLUE);
-        temp.add(4, Color.GREEN);
-        temp.add(5, Color.ORANGE);
-        temp.add(6, Color.LIGHTSEAGREEN);
-        temp.add(7, Color.SADDLEBROWN);
-        temp.add(8, Color.AQUAMARINE);
-        temp.add(9, Color.YELLOW);
-        temp.add(10, Color.AQUA);
-        temp.add(11, Color.WHEAT);
+        temp.add(3, Color.DARKGOLDENROD);
+        temp.add(4, Color.TAN);
+        temp.add(5, Color.SADDLEBROWN);
+        temp.add(6, Color.CHOCOLATE);
+        temp.add(7, Color.PALEGOLDENROD);
+        temp.add(8, Color.SANDYBROWN);
+        temp.add(9, Color.GOLDENROD);
+        temp.add(10, Color.OLIVEDRAB);
+        temp.add(11, Color.LIGHTGOLDENRODYELLOW);
         break;
 
       //Forest scheme
@@ -117,6 +136,16 @@ public abstract class Fractal
     }
     return (ArrayList<Color>) temp;
   }
+
+  /**
+   *
+   * @return: ArrayList, returns the array list of Colors
+   * for the requested color Scheme. Default is Forest.
+   */
+  //***********************************
+  //getColorScheme returns a color scheme based on the
+  //Users choice. Default is Forest.
+  //***********************************
 
   public ArrayList<Color> getColorScheme()
   {

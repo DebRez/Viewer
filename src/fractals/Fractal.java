@@ -139,7 +139,7 @@ public abstract class Fractal
 
   /**
    *
-   * @return: ArrayList, returns the array list of Colors
+   * @return ArrayList, returns the array list of Colors
    * for the requested color Scheme. Default is Forest.
    */
   //***********************************

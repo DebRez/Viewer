@@ -36,7 +36,7 @@ public class Main extends Application implements EventHandler<ActionEvent>
   private HBox controls;
   private static Canvas canvas;
   private static final double WIDTH = 1000;
-  private static final double HEIGHT = 800;
+  private static final double HEIGHT = 1000;
 
   private MenuBar menuBar;
   private Menu fileMenu = new Menu("File");
@@ -47,6 +47,9 @@ public class Main extends Application implements EventHandler<ActionEvent>
   private MenuItem mb4 = new MenuItem("Mandelbrot^4");
   private MenuItem mb5 = new MenuItem("Mandelbrot^5");
   private MenuItem mb6 = new MenuItem("Mandelbrot^6");
+  private MenuItem mb2SeaHorse = new MenuItem("MB2 -0.75, 0.1");
+  private MenuItem mb2Spiral = new MenuItem("MB2 -0.274, 0.482");
+  private MenuItem mb2Scepter = new MenuItem("MB2 -0.1, 0.83");
   private Menu chooseColors = new Menu("Color Scheme");
   private MenuItem c1 = new MenuItem("Desert");
   private MenuItem c2 = new MenuItem("Forest");
@@ -58,10 +61,10 @@ public class Main extends Application implements EventHandler<ActionEvent>
   private double bailout = 4.0;
   private int power = 2;
   //default start and end points
-  private double realStart = -2;
-  private double realEnd = 2;
-  private double imagStart = -1.5;
-  private double imagEnd = 1.5;
+  private double realStart = -2.1;
+  private double realEnd = 1;
+  private double imagStart = -1.2;
+  private double imagEnd = 1.2;
 
   /**
    *
@@ -95,20 +98,24 @@ public class Main extends Application implements EventHandler<ActionEvent>
     menuBar.getMenus().addAll(fileMenu, chooseFractal, chooseColors);
     controls.getChildren().addAll(menuBar);
     fileMenu.getItems().add(exit);
+    exit.setOnAction(e -> System.exit(0));
 
-    chooseFractal.getItems().addAll(mb2, mb3, mb4, mb5, mb6);
+    chooseFractal.getItems().addAll(mb2, mb3, mb4, mb5, mb6, mb2SeaHorse, mb2Spiral, mb2Scepter);
     mb2.setOnAction(this);
     mb3.setOnAction(this);
     mb4.setOnAction(this);
     mb5.setOnAction(this);
     mb6.setOnAction(this);
+    mb2SeaHorse.setOnAction(this);
+    mb2Spiral.setOnAction(this);
+    mb2Scepter.setOnAction(this);
+
 
     chooseColors.getItems().addAll(c1, c2, c3, c4);
     c1.setOnAction(this);
     c2.setOnAction(this);
     c3.setOnAction(this);
     c4.setOnAction(this);
-
 
     primaryStage.setScene(scene);
     primaryStage.show();
@@ -131,23 +138,68 @@ public class Main extends Application implements EventHandler<ActionEvent>
     if(source == mb2)
     {
       power = 2;
+      realStart = -2.1;
+      realEnd = 1;
+      imagStart = -1.2;
+      imagEnd = 1.2;
     }
     else if(source == mb3)
     {
       power = 3;
+      realStart = -1.4;
+      realEnd = 1.4;
+      imagStart = -1.4;
+      imagEnd = 1.4;
     }
     else if(source == mb4)
     {
       power = 4;
+      realStart = -1.4;
+      realEnd = 1.4;
+      imagStart = -1.4;
+      imagEnd = 1.4;
     }
     else if(source == mb5)
     {
       power = 5;
+      realStart = -1.4;
+      realEnd = 1.4;
+      imagStart = -1.4;
+      imagEnd = 1.4;
     }
     else if(source == mb6)
     {
       power = 6;
+      realStart = -1.4;
+      realEnd = 1.4;
+      imagStart = -1.4;
+      imagEnd = 1.4;
     }
+    else if(source == mb2SeaHorse)
+    {
+      power = 2;
+      realStart = -0.75;
+      realEnd = 0.1;
+      imagStart = -0.75;
+      imagEnd = 0.1;
+    }
+    else if(source == mb2Spiral)
+    {
+      power = 2;
+      realStart = -0.274;
+      realEnd = 0.482;
+      imagStart = -0.274;
+      imagEnd = 0.482;
+    }
+    else if(source == mb2Scepter)
+    {
+      power = 2;
+      realStart = -0.1002;
+      realEnd = 0.8383;
+      imagStart = -0.1002;
+      imagEnd = 0.8383;
+    }
+
     else if(source == c1)
     {
       colorScheme = 0;
@@ -164,7 +216,7 @@ public class Main extends Application implements EventHandler<ActionEvent>
     {
       colorScheme = 3;
     }
-    Fractal next = new Mandelbrot(realStart, realEnd, imagStart, imagEnd,
+    new Mandelbrot(realStart, realEnd, imagStart, imagEnd,
               iterations, colorScheme, bailout, canvas, power);
   }
   public static void main(String[] args) {

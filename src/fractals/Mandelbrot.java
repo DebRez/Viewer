@@ -20,7 +20,7 @@ import java.util.List;
 //***********************************
 public class Mandelbrot extends Fractal
 {
-  private boolean DEBUG = false;
+  private boolean DEBUG = true;
   private static int maxIterations;
   private int iterations;
   private double realStart;
@@ -63,8 +63,7 @@ public class Mandelbrot extends Fractal
     epsilon = calculateEpsilon();
     colors = this.getColorScheme();
 
-    int next = 0;
-    int i = -1;
+    int i;
     int j = -1;
 
     for(x = realStart; x < realEnd; x += epsilon)
@@ -85,8 +84,9 @@ public class Mandelbrot extends Fractal
           zed = zed.getSum(zed, constant);
           iterations += 1;
         }
-        gtx.setFill(getColor(iterations));
-        gtx.fillRect(j, i, 1, 1);
+        //gtx.setFill(getColor(iterations));
+        //gtx.fillRect(j, i, 1, 1);
+        gtx.getPixelWriter().setColor(j, i, getColor(iterations));
       }
     }
   }
@@ -105,7 +105,7 @@ public class Mandelbrot extends Fractal
   private double calculateEpsilon()
   {
     epsilon = Math.max(((Math.abs(realStart) + Math.abs(realEnd)) / canvas.getWidth()),
-              (Math.abs((imaginaryStart ) + Math.abs(imaginaryEnd))));
+            ((Math.abs(imaginaryStart) + Math.abs(imaginaryEnd)))/canvas.getHeight());
 
     if(DEBUG) System.out.println("epsilon is: " + epsilon);
 
@@ -125,7 +125,7 @@ public class Mandelbrot extends Fractal
   private Color getColor(int it)
   {
     Color color;
-    if(DEBUG) System.out.println("its: " + it);
+    //if(DEBUG) System.out.println("its: " + it);
     //background color
     if(it <= 9 || it >= maxIterations)
     {

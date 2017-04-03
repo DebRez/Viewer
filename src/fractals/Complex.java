@@ -31,7 +31,7 @@ public class Complex
    *
    * @param power: the value the complex number is to be raised to
    * @param old: The base number being raised to a power.
-   * @return: Complex value raised to the input value
+   * @return Complex value raised to the input value
    */
   //***********************************
   //getPower calculates the value of the input complex number raised
@@ -68,7 +68,7 @@ public class Complex
    * getSum calculates the sum of two complex numbers and returns it
    * @param a: Complex value a
    * @param b: Complex Value b
-   * @return: the Complex sum of the inputs
+   * @return the Complex sum of the inputs
    */
   //***********************************
   //getSum calculates the sum of two complex numbers and returns it
@@ -77,13 +77,12 @@ public class Complex
   //***********************************
   public Complex getSum(Complex a, Complex b)
   {
-    Complex newValue = new Complex((a.real + b.real), (a.imaginary + b.imaginary));
-    return newValue;
+    return new Complex((a.real + b.real), (a.imaginary + b.imaginary));
   }
 
   /**
    * getAbsVal is used to get the maximum value of this complex number.
-   * @return: double, the maximum value of the real and imaginary parts of a
+   * @return double, the maximum value of the real and imaginary parts of a
    * complex number
    */
   //***********************************
@@ -92,7 +91,6 @@ public class Complex
   //***********************************
   public double getAbsVal()
   {
-    double temp = Math.max(this.real, this.imaginary);
-    return temp;
+    return Math.max(this.real, this.imaginary);
   }
 }

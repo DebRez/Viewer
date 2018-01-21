@@ -24,6 +24,3 @@ Entry Point: gui.Main.java
 The color pallets are located in the Fractal.java class to be reused in future
 versions with more patterns.
 
-## Known Bugs / Missing Features
-* I would like to implement many other features in the future.
-
